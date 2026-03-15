@@ -19,8 +19,14 @@ Connects via the DAB DConnect / DAB Live cloud. Supports all Esybox models (Esyb
 
 **Flow automations:**
 - Trigger when pump starts or stops
-- Action: Turn Power Shower on/off (configurable boost % and duration)
-- Action: Set target pressure (also available via device settings)
+- Action: Turn Power Shower on/off (with boost % and duration arguments)
+- Action: Set target pressure (flow-only — no device tile to avoid accidental changes)
+
+**Power Shower device settings** (tap ⚙ on the device card):
+- Boost percentage (20 / 30 / 40 %) — default 40 %
+- Duration in minutes (5 – 30 min) — default 30 min
+
+These defaults are used when toggling Power Shower from the device tile or via the flow action without explicit arguments.
 
 ---
 
@@ -36,8 +42,11 @@ Connects via the DAB DConnect / DAB Live cloud. Supports all Esybox models (Esyb
 ## Installation
 
 1. Install the app on your Homey.
-2. Go to **Settings → Apps → DAB Pumps → Configure** and enter your DAB credentials.
-3. Go to **Devices → Add Device → DAB Pumps / Esybox** — Homey will discover all pumps in your account.
+2. Go to **Devices → Add Device → DAB Pumps / Esybox**.
+3. Enter your DAB account email and password when prompted — Homey will verify the credentials and discover all pumps in your account.
+4. Select your pump and tap **Add**.
+
+> Your credentials are stored in the app and can be updated later via **Settings → Apps → DAB Pumps → Configure**.
 
 ---
 

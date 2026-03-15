@@ -23,11 +23,13 @@ Setup
 -----
 1. Install this app on your Homey.
 
-2. Open Settings > Apps > DAB Pumps > Configure.
-   Enter your DAB account email and password, then tap Save.
+2. Go to Devices > Add Device > DAB Pumps / Esybox.
+   Enter your DAB account email and password when prompted.
+   Homey will verify your credentials and discover all pumps in your account.
+   Select yours and tap Add.
 
-3. Go to Devices > Add Device > DAB Pumps / Esybox.
-   Homey will discover all pumps in your account — select yours and tap Add.
+   Your credentials are stored in the app and can be updated later via
+   Settings > Apps > DAB Pumps > Configure.
 
 
 Capabilities

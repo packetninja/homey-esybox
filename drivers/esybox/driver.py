@@ -2,8 +2,8 @@
 DAB Pumps Esybox driver for Homey.
 
 Handles device pairing by discovering pumps via the DAB cloud API.
-Requires DAB credentials to be set in app settings first:
-  Settings > Apps > DAB Pumps > Configure
+Credentials are entered during the pairing wizard and stored in app settings.
+They can be updated later via Settings > Apps > DAB Pumps > Configure.
 """
 
 import logging
@@ -74,7 +74,7 @@ class EsyboxDriver(Driver):
     async def on_pair_list_devices(self, view_data) -> list:
         """
         Called during device pairing to enumerate available pumps.
-        Requires DAB credentials to be set in app settings first.
+        Credentials must have been validated and stored by on_login first.
         """
         username = self.homey.settings.get("username")
         password = self.homey.settings.get("password")
