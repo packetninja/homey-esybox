@@ -5,8 +5,13 @@
   "sdk": 3,
   "runtime": "python",
   "pythonVersion": "3.13",
-  "pythonPackages": ["pydabpumps"],
-  "platforms": ["local", "cloud"],
+  "pythonPackages": [
+    "pydabpumps"
+  ],
+  "platforms": [
+    "local",
+    "cloud"
+  ],
   "name": {
     "en": "DAB Pumps / Esybox"
   },
@@ -14,34 +19,59 @@
     "en": "Monitor and control your DAB Pumps Esybox water pressure pump via the DAB cloud"
   },
   "tags": {
-    "en": ["water", "pump", "pressure", "esybox", "dab", "shower", "esybox mini"]
+    "en": [
+      "water",
+      "pump",
+      "pressure",
+      "esybox",
+      "dab",
+      "shower",
+      "esybox mini"
+    ]
   },
-  "category": ["appliances"],
+  "category": [
+    "appliances"
+  ],
   "permissions": [],
   "settings": [
     {
       "id": "username",
       "type": "text",
-      "title": { "en": "DAB Account Email" },
-      "hint": { "en": "Email address for your DAB DConnect or DAB Live account. Tip: create a dedicated account to avoid session conflicts." },
+      "title": {
+        "en": "DAB Account Email"
+      },
+      "hint": {
+        "en": "Email address for your DAB DConnect or DAB Live account. Tip: create a dedicated account to avoid session conflicts."
+      },
       "value": ""
     },
     {
       "id": "password",
       "type": "password",
-      "title": { "en": "DAB Account Password" },
+      "title": {
+        "en": "DAB Account Password"
+      },
       "value": ""
     },
     {
       "id": "poll_interval",
       "type": "number",
-      "title": { "en": "Poll Interval (seconds)" },
-      "hint": { "en": "How often to fetch pump data from DAB cloud. Minimum 10 s, recommended 30 s." },
+      "title": {
+        "en": "Poll Interval (seconds)"
+      },
+      "hint": {
+        "en": "How often to fetch pump data from DAB cloud. Minimum 10 s, recommended 30 s."
+      },
       "value": 30,
       "min": 10,
       "max": 3600
     }
   ],
+  "images": {
+    "small": "./assets/images/small.jpg",
+    "large": "./assets/images/large.jpg",
+    "xlarge": "./assets/images/xlarge.jpg"
+  },
   "author": {
     "name": "Attilla de Groot",
     "email": ""
@@ -50,29 +80,49 @@
     "triggers": [
       {
         "id": "pump_started",
-        "title": { "en": "Pump started" },
+        "title": {
+          "en": "Pump started"
+        },
         "args": [
-          { "type": "device", "name": "device", "filter": "driver_id=esybox" }
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=esybox"
+          }
         ]
       },
       {
         "id": "pump_stopped",
-        "title": { "en": "Pump stopped" },
+        "title": {
+          "en": "Pump stopped"
+        },
         "args": [
-          { "type": "device", "name": "device", "filter": "driver_id=esybox" }
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=esybox"
+          }
         ]
       }
     ],
     "actions": [
       {
         "id": "set_target_pressure",
-        "title": { "en": "Set target pressure" },
+        "title": {
+          "en": "Set target pressure"
+        },
         "args": [
-          { "type": "device", "name": "device", "filter": "driver_id=esybox" },
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=esybox"
+          },
           {
             "type": "range",
             "name": "pressure",
-            "title": { "en": "Pressure" },
+            "title": {
+              "en": "Pressure"
+            },
             "min": 1,
             "max": 6,
             "step": 0.1,
@@ -83,23 +133,48 @@
       },
       {
         "id": "power_shower_on",
-        "title": { "en": "Turn power shower on" },
+        "title": {
+          "en": "Turn power shower on"
+        },
         "args": [
-          { "type": "device", "name": "device", "filter": "driver_id=esybox" },
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=esybox"
+          },
           {
             "type": "dropdown",
             "name": "boost",
-            "title": { "en": "Boost" },
+            "title": {
+              "en": "Boost"
+            },
             "values": [
-              { "id": "20", "label": { "en": "+ 20 %" } },
-              { "id": "30", "label": { "en": "+ 30 %" } },
-              { "id": "40", "label": { "en": "+ 40 %" } }
+              {
+                "id": "20",
+                "label": {
+                  "en": "+ 20 %"
+                }
+              },
+              {
+                "id": "30",
+                "label": {
+                  "en": "+ 30 %"
+                }
+              },
+              {
+                "id": "40",
+                "label": {
+                  "en": "+ 40 %"
+                }
+              }
             ]
           },
           {
             "type": "range",
             "name": "duration",
-            "title": { "en": "Duration" },
+            "title": {
+              "en": "Duration"
+            },
             "min": 300,
             "max": 1800,
             "step": 60,
@@ -110,9 +185,15 @@
       },
       {
         "id": "power_shower_off",
-        "title": { "en": "Turn power shower off" },
+        "title": {
+          "en": "Turn power shower off"
+        },
         "args": [
-          { "type": "device", "name": "device", "filter": "driver_id=esybox" }
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=esybox"
+          }
         ]
       }
     ]
@@ -168,8 +249,8 @@
       "getable": true,
       "setable": true,
       "uiComponent": "thermostat",
-      "min": 1.0,
-      "max": 6.0,
+      "min": 1,
+      "max": 6,
       "step": 0.1
     },
     "power_shower": {
@@ -189,6 +270,11 @@
         "en": "Esybox"
       },
       "class": "other",
+      "images": {
+        "small": "./drivers/esybox/assets/images/small.jpg",
+        "large": "./drivers/esybox/assets/images/large.jpg",
+        "xlarge": "./drivers/esybox/assets/images/xlarge.jpg"
+      },
       "capabilities": [
         "measure_pressure",
         "measure_flow_rate",
@@ -197,13 +283,20 @@
         "pump_running",
         "power_shower"
       ],
-      "platforms": ["local", "cloud"],
+      "platforms": [
+        "local",
+        "cloud"
+      ],
       "settings": [
         {
           "id": "power_shower_boost",
           "type": "number",
-          "label": { "en": "Power Shower Boost (%)" },
-          "hint": { "en": "Pressure boost percentage during a power shower. Allowed values: 20, 30 or 40." },
+          "label": {
+            "en": "Power Shower Boost (%)"
+          },
+          "hint": {
+            "en": "Pressure boost percentage during a power shower. Allowed values: 20, 30 or 40."
+          },
           "value": 40,
           "min": 20,
           "max": 40,
@@ -212,8 +305,12 @@
         {
           "id": "power_shower_duration",
           "type": "number",
-          "label": { "en": "Power Shower Duration (minutes)" },
-          "hint": { "en": "How long the power shower runs. Minimum 5, maximum 30 minutes." },
+          "label": {
+            "en": "Power Shower Duration (minutes)"
+          },
+          "hint": {
+            "en": "How long the power shower runs. Minimum 5, maximum 30 minutes."
+          },
           "value": 30,
           "min": 5,
           "max": 30,
@@ -226,8 +323,12 @@
           "template": "login_credentials",
           "options": {
             "logo": "/assets/icon.svg",
-            "usernameLabel": { "en": "DAB Account Email" },
-            "passwordLabel": { "en": "DAB Account Password" }
+            "usernameLabel": {
+              "en": "DAB Account Email"
+            },
+            "passwordLabel": {
+              "en": "DAB Account Password"
+            }
           }
         },
         {
