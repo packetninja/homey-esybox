@@ -129,6 +129,7 @@
       "decimals": 2,
       "getable": true,
       "setable": false,
+      "insights": true,
       "uiComponent": "sensor"
     },
     "measure_flow_rate": {
@@ -142,6 +143,7 @@
       "decimals": 1,
       "getable": true,
       "setable": false,
+      "insights": true,
       "uiComponent": "sensor"
     },
     "pump_running": {
@@ -151,6 +153,7 @@
       },
       "getable": true,
       "setable": false,
+      "insights": true,
       "uiComponent": "sensor"
     },
     "target_pressure": {
