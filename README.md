@@ -75,20 +75,6 @@ homey app validate --level publish
 
 ---
 
-## Publishing to the Homey App Store
-
-1. Run `homey app validate --level publish` and fix any warnings.
-2. Ensure `assets/images/` contains `small.jpg` (250×175), `large.jpg` (500×350), and `xlarge.jpg` (1000×700).
-3. Same images required under `drivers/esybox/assets/images/`.
-4. Run `homey app publish` — this bumps the version, packages the app, and submits it for review.
-5. Track status at [tools.developer.homey.app](https://tools.developer.homey.app) under *Apps SDK → My Apps*.
-
-**Note:** Publishing to cloud/hybrid platforms (`"platforms": ["local", "cloud"]`) requires a [Homey Verified Developer](https://homey.app/en-us/developer/) subscription.
-
-Review typically takes up to 2 weeks.
-
----
-
 ## License
 
 MIT
