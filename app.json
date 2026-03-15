@@ -1,0 +1,244 @@
+{
+  "id": "com.dabpumps.esybox",
+  "version": "1.0.0",
+  "compatibility": ">=13.0.0",
+  "sdk": 3,
+  "runtime": "python",
+  "pythonVersion": "3.13",
+  "pythonPackages": ["pydabpumps"],
+  "platforms": ["local", "cloud"],
+  "name": {
+    "en": "DAB Pumps / Esybox"
+  },
+  "description": {
+    "en": "Monitor and control your DAB Pumps Esybox water pressure pump via the DAB cloud"
+  },
+  "tags": {
+    "en": ["water", "pump", "pressure", "esybox", "dab", "shower", "esybox mini"]
+  },
+  "category": ["appliances"],
+  "permissions": [],
+  "settings": [
+    {
+      "id": "username",
+      "type": "text",
+      "title": { "en": "DAB Account Email" },
+      "hint": { "en": "Email address for your DAB DConnect or DAB Live account. Tip: create a dedicated account to avoid session conflicts." },
+      "value": ""
+    },
+    {
+      "id": "password",
+      "type": "password",
+      "title": { "en": "DAB Account Password" },
+      "value": ""
+    },
+    {
+      "id": "poll_interval",
+      "type": "number",
+      "title": { "en": "Poll Interval (seconds)" },
+      "hint": { "en": "How often to fetch pump data from DAB cloud. Minimum 10 s, recommended 30 s." },
+      "value": 30,
+      "min": 10,
+      "max": 3600
+    }
+  ],
+  "author": {
+    "name": "Attilla de Groot",
+    "email": ""
+  },
+  "flow": {
+    "triggers": [
+      {
+        "id": "pump_started",
+        "title": { "en": "Pump started" },
+        "args": [
+          { "type": "device", "name": "device", "filter": "driver_id=esybox" }
+        ]
+      },
+      {
+        "id": "pump_stopped",
+        "title": { "en": "Pump stopped" },
+        "args": [
+          { "type": "device", "name": "device", "filter": "driver_id=esybox" }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "set_target_pressure",
+        "title": { "en": "Set target pressure" },
+        "args": [
+          { "type": "device", "name": "device", "filter": "driver_id=esybox" },
+          {
+            "type": "range",
+            "name": "pressure",
+            "title": { "en": "Pressure" },
+            "min": 1,
+            "max": 6,
+            "step": 0.1,
+            "label": " bar",
+            "labelDecimals": 1
+          }
+        ]
+      },
+      {
+        "id": "power_shower_on",
+        "title": { "en": "Turn power shower on" },
+        "args": [
+          { "type": "device", "name": "device", "filter": "driver_id=esybox" },
+          {
+            "type": "dropdown",
+            "name": "boost",
+            "title": { "en": "Boost" },
+            "values": [
+              { "id": "20", "label": { "en": "+ 20 %" } },
+              { "id": "30", "label": { "en": "+ 30 %" } },
+              { "id": "40", "label": { "en": "+ 40 %" } }
+            ]
+          },
+          {
+            "type": "range",
+            "name": "duration",
+            "title": { "en": "Duration" },
+            "min": 300,
+            "max": 1800,
+            "step": 60,
+            "label": " s",
+            "labelDecimals": 0
+          }
+        ]
+      },
+      {
+        "id": "power_shower_off",
+        "title": { "en": "Turn power shower off" },
+        "args": [
+          { "type": "device", "name": "device", "filter": "driver_id=esybox" }
+        ]
+      }
+    ]
+  },
+  "capabilities": {
+    "measure_pressure": {
+      "type": "number",
+      "title": {
+        "en": "Water Pressure"
+      },
+      "units": {
+        "en": "bar"
+      },
+      "decimals": 2,
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor"
+    },
+    "measure_flow_rate": {
+      "type": "number",
+      "title": {
+        "en": "Flow Rate"
+      },
+      "units": {
+        "en": "L/min"
+      },
+      "decimals": 1,
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor"
+    },
+    "pump_running": {
+      "type": "boolean",
+      "title": {
+        "en": "Pump Running"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor"
+    },
+    "target_pressure": {
+      "type": "number",
+      "title": {
+        "en": "Pressure setpoint"
+      },
+      "units": {
+        "en": "bar"
+      },
+      "decimals": 1,
+      "getable": true,
+      "setable": true,
+      "uiComponent": "thermostat",
+      "min": 1.0,
+      "max": 6.0,
+      "step": 0.1
+    },
+    "power_shower": {
+      "type": "boolean",
+      "title": {
+        "en": "Power Shower"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "toggle"
+    }
+  },
+  "drivers": [
+    {
+      "id": "esybox",
+      "name": {
+        "en": "Esybox"
+      },
+      "class": "other",
+      "capabilities": [
+        "measure_pressure",
+        "measure_flow_rate",
+        "measure_temperature",
+        "meter_water",
+        "pump_running",
+        "power_shower"
+      ],
+      "platforms": ["local", "cloud"],
+      "settings": [
+        {
+          "id": "power_shower_boost",
+          "type": "number",
+          "label": { "en": "Power Shower Boost (%)" },
+          "hint": { "en": "Pressure boost percentage during a power shower. Allowed values: 20, 30 or 40." },
+          "value": 40,
+          "min": 20,
+          "max": 40,
+          "step": 10
+        },
+        {
+          "id": "power_shower_duration",
+          "type": "number",
+          "label": { "en": "Power Shower Duration (minutes)" },
+          "hint": { "en": "How long the power shower runs. Minimum 5, maximum 30 minutes." },
+          "value": 30,
+          "min": 5,
+          "max": 30,
+          "step": 5
+        }
+      ],
+      "pair": [
+        {
+          "id": "login_credentials",
+          "template": "login_credentials",
+          "options": {
+            "logo": "/assets/icon.svg",
+            "usernameLabel": { "en": "DAB Account Email" },
+            "passwordLabel": { "en": "DAB Account Password" }
+          }
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ]
+    }
+  ]
+}

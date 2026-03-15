@@ -1,0 +1,10 @@
+node_modules/
+.homeybuild/
+python_packages/
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+.env
+env.json
+*.egg-info

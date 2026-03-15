@@ -1,0 +1,42 @@
+{
+  "pair": {
+    "list_devices": {
+      "loading": "Discovering your DAB pumps…",
+      "error": {
+        "no_devices": "No pumps found. Check that your pump is registered in the DAB app.",
+        "no_credentials": "Please configure your DAB credentials in Settings > Apps > DAB Pumps > Configure first."
+      }
+    }
+  },
+  "capabilities": {
+    "measure_pressure": {
+      "title": {
+        "en": "Water Pressure"
+      }
+    },
+    "measure_flow_rate": {
+      "title": {
+        "en": "Flow Rate"
+      }
+    },
+    "pump_running": {
+      "title": {
+        "en": "Pump Running"
+      },
+      "true": "Running",
+      "false": "Stopped"
+    },
+    "target_pressure": {
+      "title": {
+        "en": "Target Pressure"
+      }
+    },
+    "power_shower": {
+      "title": {
+        "en": "Power Shower"
+      },
+      "true": "Active",
+      "false": "Inactive"
+    }
+  }
+}
