@@ -67,6 +67,7 @@
       "max": 3600
     }
   ],
+  "brandColor": "#E2001A",
   "images": {
     "small": "./assets/images/small.jpg",
     "large": "./assets/images/large.jpg",
@@ -111,6 +112,9 @@
         "title": {
           "en": "Set target pressure"
         },
+        "titleFormatted": {
+          "en": "Set target pressure to [[pressure]] bar"
+        },
         "args": [
           {
             "type": "device",
@@ -135,6 +139,9 @@
         "id": "power_shower_on",
         "title": {
           "en": "Turn power shower on"
+        },
+        "titleFormatted": {
+          "en": "Turn power shower on with [[boost]]% boost for [[duration]] seconds"
         },
         "args": [
           {
